@@ -13,4 +13,9 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
+
+# Ignore sublime workspace
 *.sublime-workspace
+
+# Ignore uploads
+/public/uploads/
