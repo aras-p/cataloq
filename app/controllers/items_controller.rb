@@ -3,7 +3,10 @@ class ItemsController < ApplicationController
   # GET /items.json
   def index
     #@items = Item.all
-    @items = Item.search(params[:h])
+    @parH = params[:h].to_i
+    @parB = params[:b].to_i
+    @months = Array['Visi', 'Sausis', 'Vasaris', 'Kovas', 'Balandis', 'Geguze', 'Birzelis', 'Liepa', 'Rugpjutis', 'Rugsejis', 'Spalis', 'Lapkritis', 'Gruodis']
+    @items = Item.search(@parH, @parB)
 
     respond_to do |format|
       format.html # index.html.erb

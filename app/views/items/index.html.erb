@@ -1,23 +1,25 @@
 <h1>Listing items <span class="badge"><%= @items.count %></span></h1>
 
-<p>
+<ul class="nav">
 Aukštis:
 <span class="btn-group">
-<%= link_to 'Visi', items_path, :class => (params[:h] ? "btn btn-default btn-sm" : "btn btn-primary btn-sm") %>
-<%= link_to '< 80', items_path(:h=>1), :class => (params[:h]=="1" ? "btn btn-primary btn-sm" : "btn btn-default btn-sm") %>
-<%= link_to '80-120', items_path(:h=>2), :class => (params[:h]=="2" ? "btn btn-primary btn-sm" : "btn btn-default btn-sm") %>
-<%= link_to '> 120', items_path(:h=>3), :class => (params[:h]=="3" ? "btn btn-primary btn-sm" : "btn btn-default btn-sm") %>
+<%= link_to 'Visi', params.merge(:h=>nil), :class => (@parH==0 ? "btn btn-primary btn-sm" : "btn btn-default btn-sm") %>
+<%= link_to '< 80', params.merge(:h=>1), :class => (@parH==1 ? "btn btn-primary btn-sm" : "btn btn-default btn-sm") %>
+<%= link_to '80-120', params.merge(:h=>2), :class => (@parH==2 ? "btn btn-primary btn-sm" : "btn btn-default btn-sm") %>
+<%= link_to '> 120', params.merge(:h=>3), :class => (@parH==3 ? "btn btn-primary btn-sm" : "btn btn-default btn-sm") %>
 </span>
-</p>
 
-<!--
-<%= form_tag items_path, :method => 'get' do %>
-  <p>
-    <%= text_field_tag :search, params[:search] %>
-    <%= submit_tag "Search by height", :name => nil %>
-  </p>
-<% end %>
--->
+&nbsp;Žydėjimas:
+<div class="btn-group">
+<%= link_to raw(@months[@parB] + " <span class='caret'></span>"), params.merge(:b=>nil), :class => "btn btn-default btn-sm dropdown-toggle", "data-toggle" => "dropdown" %>
+<ul class="dropdown-menu" role="menu">
+    <% @months.each_with_index do |mo, index| %>
+        <li><%= link_to mo, params.merge(:b=>index)%></li>
+    <% end %>
+</ul>
+</div>
+</ul>
+<br/>
 
 <table class="table table-striped">
   <tr>
