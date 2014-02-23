@@ -1,4 +1,23 @@
-<h1>Listing items</h1>
+<h1>Listing items <span class="badge"><%= @items.count %></span></h1>
+
+<p>
+Aukštis:
+<span class="btn-group">
+<%= link_to 'Visi', items_path, :class => (params[:h] ? "btn btn-default btn-sm" : "btn btn-primary btn-sm") %>
+<%= link_to '< 80', items_path(:h=>1), :class => (params[:h]=="1" ? "btn btn-primary btn-sm" : "btn btn-default btn-sm") %>
+<%= link_to '80-120', items_path(:h=>2), :class => (params[:h]=="2" ? "btn btn-primary btn-sm" : "btn btn-default btn-sm") %>
+<%= link_to '> 120', items_path(:h=>3), :class => (params[:h]=="3" ? "btn btn-primary btn-sm" : "btn btn-default btn-sm") %>
+</span>
+</p>
+
+<!--
+<%= form_tag items_path, :method => 'get' do %>
+  <p>
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "Search by height", :name => nil %>
+  </p>
+<% end %>
+-->
 
 <table class="table table-striped">
   <tr>
@@ -18,8 +37,8 @@
 
 <% @items.each do |item| %>
   <tr>
-    <td><%= item.name %></td>
-    <td><%= item.latin %></td>
+    <td><%= link_to item.name, item %></td>
+    <td><%= link_to item.latin, item %></td>
     <td><%= item.height %></td>
     <td><%= item.width %></td>
     <td><%= item.color %></td>
@@ -27,7 +46,6 @@
     <td><%= item.bloom2 %></td>
     <td><%= item.conditions %></td>
     <td><%= image_tag(item.picture_url, :width => 100) if item.picture.present? %></td>
-    <td><%= link_to 'Show', item, :class => "btn btn-default btn-xs" %></td>
     <td><%= link_to 'Edit', edit_item_path(item), :class => "btn btn-default btn-xs"  %></td>
     <td><%= link_to 'Delete', item, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger btn-xs" %></td>
   </tr>
