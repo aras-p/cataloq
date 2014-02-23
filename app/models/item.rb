@@ -10,11 +10,11 @@ class Item < ActiveRecord::Base
 
 	def self.search(h)
 		if h.to_i == 1
-			where('height <= 80')
+			where('height < 80')
 		elsif h.to_i == 2
 			where('height >= 80 and height <= 120')
 		elsif h.to_i == 3
-			where('height >= 120')
+			where('height > 120')
 		else
 			scoped
 		end
