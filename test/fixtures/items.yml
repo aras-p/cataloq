@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  latin: MyString
+  height: 1
+  width: 1
+  color: MyString
+  bloom1: 1
+  bloom2: 1
+  conditions: MyString
+  picture: MyString
+
+two:
+  name: MyString
+  latin: MyString
+  height: 1
+  width: 1
+  color: MyString
+  bloom1: 1
+  bloom2: 1
+  conditions: MyString
+  picture: MyString

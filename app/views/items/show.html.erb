@@ -1,0 +1,50 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @item.name %>
+</p>
+
+<p>
+  <b>Latin:</b>
+  <%= @item.latin %>
+</p>
+
+<p>
+  <b>Height:</b>
+  <%= @item.height %>
+</p>
+
+<p>
+  <b>Width:</b>
+  <%= @item.width %>
+</p>
+
+<p>
+  <b>Color:</b>
+  <%= @item.color %>
+</p>
+
+<p>
+  <b>Bloom1:</b>
+  <%= @item.bloom1 %>
+</p>
+
+<p>
+  <b>Bloom2:</b>
+  <%= @item.bloom2 %>
+</p>
+
+<p>
+  <b>Conditions:</b>
+  <%= @item.conditions %>
+</p>
+
+<p>
+  <b>Picture:</b>
+  <%= @item.picture %>
+</p>
+
+
+<%= link_to 'Edit', edit_item_path(@item) %> |
+<%= link_to 'Back', items_path %>

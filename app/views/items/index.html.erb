@@ -1,0 +1,39 @@
+<h1>Listing items</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Latin</th>
+    <th>Height</th>
+    <th>Width</th>
+    <th>Color</th>
+    <th>Bloom1</th>
+    <th>Bloom2</th>
+    <th>Conditions</th>
+    <th>Picture</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @items.each do |item| %>
+  <tr>
+    <td><%= item.name %></td>
+    <td><%= item.latin %></td>
+    <td><%= item.height %></td>
+    <td><%= item.width %></td>
+    <td><%= item.color %></td>
+    <td><%= item.bloom1 %></td>
+    <td><%= item.bloom2 %></td>
+    <td><%= item.conditions %></td>
+    <td><%= item.picture %></td>
+    <td><%= link_to 'Show', item %></td>
+    <td><%= link_to 'Edit', edit_item_path(item) %></td>
+    <td><%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Item', new_item_path %>
