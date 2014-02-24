@@ -1,4 +1,3 @@
-<h1>Listing items <span class="badge"><%= @items.count %></span></h1>
 
 <ul class="nav">
 Aukštis:
@@ -11,9 +10,12 @@ Aukštis:
 
 &nbsp;Žydėjimas:
 <div class="btn-group">
-<%= link_to raw(@months[@parB] + " <span class='caret'></span>"), params.merge(:b=>nil), :class => "btn btn-default btn-sm dropdown-toggle", "data-toggle" => "dropdown" %>
+<%= link_to raw(ItemsController.months()[@parB] + " <span class='caret'></span>"),
+    params.merge(:b=>nil),
+    :class => (@parB!=0 ? "btn btn-primary btn-sm dropdown-toggle" : "btn btn-default btn-sm dropdown-toggle"),
+    "data-toggle" => "dropdown" %>
 <ul class="dropdown-menu" role="menu">
-    <% @months.each_with_index do |mo, index| %>
+    <% ItemsController.months().each_with_index do |mo, index| %>
         <li><%= link_to mo, params.merge(:b=>index)%></li>
     <% end %>
 </ul>
@@ -21,31 +23,28 @@ Aukštis:
 </ul>
 <br/>
 
+<p>Rezultatai: <span class="badge"><%= @items.count %></span></p>
+
 <table class="table table-striped">
   <tr>
-    <th>Name</th>
-    <th>Latin</th>
-    <th>Height</th>
-    <th>Width</th>
-    <th>Color</th>
-    <th>Bloom1</th>
-    <th>Bloom2</th>
-    <th>Conditions</th>
-    <th>Picture</th>
-    <th></th>
+    <th>Pavadinimas</th>
+    <th>Aukštis</th>
+    <th>Plotis</th>
+    <th>Spalva</th>
+    <th>Žydi</th>
+    <th>Sąlygos</th>
+    <th>Nuotrauka</th>
     <th></th>
     <th></th>
   </tr>
 
 <% @items.each do |item| %>
   <tr>
-    <td><%= link_to item.name, item %></td>
-    <td><%= link_to item.latin, item %></td>
-    <td><%= item.height %></td>
-    <td><%= item.width %></td>
+    <td><%= link_to (raw "#{h item.name} <i>(#{h item.latin})</i>"), item %></td>
+    <td class="text-right"><%= item.height %></td>
+    <td class="text-right"><%= item.width %></td>
     <td><%= item.color %></td>
-    <td><%= item.bloom1 %></td>
-    <td><%= item.bloom2 %></td>
+    <td><small><%= ItemsController.months()[item.bloom1] %>-<%= ItemsController.months()[item.bloom2] %></small></td>
     <td><%= item.conditions %></td>
     <td><%= image_tag(item.picture_url, :width => 100) if item.picture.present? %></td>
     <td><%= link_to 'Edit', edit_item_path(item), :class => "btn btn-default btn-xs"  %></td>

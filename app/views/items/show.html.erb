@@ -1,50 +1,32 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Name:</b>
-  <%= @item.name %>
-</p>
+<p><%= link_to 'Atgal', items_path, :class => "btn btn-default btn-sm" %></p>
 
 <p>
-  <b>Latin:</b>
-  <%= @item.latin %>
+<div class="row">
+  <div class="col col-xs-2">Pavadinimas:</div><div class="col col-xs-10"><b><%= @item.name %></b> <i>(<%= @item.latin %>)</i></div>
+</div>
+<div class="row">
+  <div class="col col-xs-2">Aukštis:</div><div class="col col-xs-10"><%= @item.height %></div>
+</div>
+<div class="row">
+  <div class="col col-xs-2">Plotis:</div><div class="col col-xs-10"><%= @item.width %></div>
+</div>
+<div class="row">
+  <div class="col col-xs-2">Spalva:</div><div class="col col-xs-10"><%= @item.color %></div>
+</div>
+<div class="row">
+  <div class="col col-xs-2">Žydi:</div><div class="col col-xs-10">
+    <%= ItemsController.months()[@item.bloom1] %> -
+    <%= ItemsController.months()[@item.bloom2] %>
+  </div>
+</div>
+<div class="row">
+  <div class="col col-xs-2">Sąlygos:</div><div class="col col-xs-10"><%= @item.conditions %></div>
+</div>
+<div class="row">
+  <div class="col col-xs-2">Nuotrauka:</div><div class="col col-xs-10"><%= image_tag(@item.picture_url, :width => 300) if @item.picture.present? %></div>
+</div>
 </p>
 
-<p>
-  <b>Height:</b>
-  <%= @item.height %>
-</p>
-
-<p>
-  <b>Width:</b>
-  <%= @item.width %>
-</p>
-
-<p>
-  <b>Color:</b>
-  <%= @item.color %>
-</p>
-
-<p>
-  <b>Bloom1:</b>
-  <%= @item.bloom1 %>
-</p>
-
-<p>
-  <b>Bloom2:</b>
-  <%= @item.bloom2 %>
-</p>
-
-<p>
-  <b>Conditions:</b>
-  <%= @item.conditions %>
-</p>
-
-<p>
-  <b>Picture:</b>
-  <%= image_tag(@item.picture_url, :width => 300) if @item.picture.present? %>
-</p>
-
-
-<%= link_to 'Edit', edit_item_path(@item), :class => "btn btn-primary" %>
-<%= link_to 'Back', items_path, :class => "btn btn-default" %>
+<p><%= link_to 'Redaguoti', edit_item_path(@item), :class => "btn btn-primary" %></p>
