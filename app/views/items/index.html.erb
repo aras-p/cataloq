@@ -45,7 +45,7 @@ Aukštis:
     <td class="text-right"><%= item.width %></td>
     <td><%= item.color %></td>
     <td><small><%= ItemsController.months()[item.bloom1] %>-<%= ItemsController.months()[item.bloom2] %></small></td>
-    <td><%= item.conditions %></td>
+    <td><small><%= item.conditions %></small></td>
     <td><%= image_tag(item.picture_url, :width => 100) if item.picture.present? %></td>
     <td><%= link_to 'Edit', edit_item_path(item), :class => "btn btn-default btn-xs"  %></td>
     <td><%= link_to 'Delete', item, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger btn-xs" %></td>
