@@ -1,4 +1,4 @@
-<%= form_for @item, html: {class: "form-horizontal"} do |f| %>
+<%= form_for @item, html: {class: "form-horizontal", :multipart => true} do |f| %>
   <% if @item.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@item.errors.count, "error") %> prohibited this item from being saved:</h2>
@@ -49,14 +49,17 @@
     <span class="col col-xs-3">
     <%= f.text_field :color, class: "form-control input-with-feedback" %>
     </span>
-    <%= f.label :Sąlygos, class: "col col-xs-2 control-label" %>
-    <span class="col col-xs-4">
-    <%= f.text_field :conditions, class: "form-control input-with-feedback" %>
-    </span>
   </div>
   <div class="form-group">
+    <%= f.label :Aprašymas, class: "col col-xs-2 control-label" %>
+    <span class="col col-xs-9">
+    <%= f.text_area :conditions, size: "30x4", class: "form-control input-with-feedback" %>
+    </span>
+  </div>
+    <div class="form-group">
     <%= f.label :Nuotrauka, class: "col col-xs-2 control-label" %>
     <span class="col col-xs-9">
+    <%= image_tag(@item.picture_url, :width => 300) if @item.picture.present? %><br/>
     <div class="fileinput fileinput-new" data-provides="fileinput">
       <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;"></div>
       <div>
