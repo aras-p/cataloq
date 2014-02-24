@@ -3,6 +3,9 @@ class ItemsController < ApplicationController
   def self.months()
     Array['Visi', 'Sausis', 'Vasaris', 'Kovas', 'Balandis', 'Geguze', 'Birzelis', 'Liepa', 'Rugpjutis', 'Rugsejis', 'Spalis', 'Lapkritis', 'Gruodis']
   end
+  def self.monthOptions()
+    ItemsController.months().drop(1).each_with_index.map { |x,i| [x,i+1] }
+  end
 
   # GET /items
   # GET /items.json

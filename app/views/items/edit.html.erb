@@ -1,8 +1,6 @@
-<h1>Editing item</h1>
+<%= link_to 'Į sąrašą', items_path, :class => "btn btn-default btn-sm" %>
+<%= link_to 'Parodyti', @item, :class => "btn btn-default btn-sm" %>
+
+<h2>Redaguojam <%=@item.name %></h2>
 
 <%= render 'form' %>
-
-<br/>
-
-<%= link_to 'Show', @item, :class => "btn btn-default" %>
-<%= link_to 'Back', items_path, :class => "btn btn-default" %>

@@ -12,48 +12,50 @@
   <% end %>
 
   <div class="form-group">
-    <%= f.label :name, class: "col col-xs-2 control-label" %>
-    <span class="col col-xs-9">
+    <%= f.label :Pavadinimas, class: "col col-xs-2 control-label" %>
+    <span class="col col-xs-4">
     <%= f.text_field :name, class: "form-control input-with-feedback" %>
     </span>
-  </div>
-  <div class="form-group">
-    <%= f.label :latin, class: "col col-xs-2 control-label" %>
-    <span class="col col-xs-9">
+    <%= f.label :lot, class: "col col-xs-1 control-label" %>
+    <span class="col col-xs-4">
     <%= f.text_field :latin, class: "form-control input-with-feedback" %>
     </span>
   </div>
   <div class="form-group">
-    <%= f.label :height, class: "col col-xs-2 control-label" %>
+    <%= f.label :Aukštis, class: "col col-xs-2 control-label" %>
     <span class="col col-xs-2">
     <%= f.number_field :height, class: "form-control input-with-feedback" %>
     </span>
-    <%= f.label :width, class: "col col-xs-1 control-label" %>
+    <%= f.label :Plotis, class: "col col-xs-1 control-label" %>
     <span class="col col-xs-2">
     <%= f.number_field :width, class: "form-control input-with-feedback" %>
     </span>
   </div>
   <div class="form-group">
-    <%= f.label :bloom, class: "col col-xs-2 control-label" %>
+    <%= f.label :Žydi, class: "col col-xs-2 control-label" %>
     <span class="col col-xs-2">
-    <%= f.number_field :bloom1, class: "form-control input-with-feedback" %>
+    <%=
+      select(:item, :bloom1, ItemsController.monthOptions(), {}, {class: "form-control input-with-feedback"})
+    %>
     </span>
     <span class="col col-xs-2">
-    <%= f.number_field :bloom2, class: "form-control input-with-feedback" %>
+    <%=
+      select(:item, :bloom2, ItemsController.monthOptions(), {}, {class: "form-control input-with-feedback"})
+    %>
     </span>
   </div>
   <div class="form-group">
-    <%= f.label :color, class: "col col-xs-2 control-label" %>
+    <%= f.label :Spalva, class: "col col-xs-2 control-label" %>
     <span class="col col-xs-3">
     <%= f.text_field :color, class: "form-control input-with-feedback" %>
     </span>
-    <%= f.label :conditions, class: "col col-xs-2 control-label" %>
+    <%= f.label :Sąlygos, class: "col col-xs-2 control-label" %>
     <span class="col col-xs-4">
     <%= f.text_field :conditions, class: "form-control input-with-feedback" %>
     </span>
   </div>
   <div class="form-group">
-    <%= f.label :picture, class: "col col-xs-2 control-label" %>
+    <%= f.label :Nuotrauka, class: "col col-xs-2 control-label" %>
     <span class="col col-xs-9">
     <%= f.file_field :picture, class: "input-with-feedback" %>
     </span>
