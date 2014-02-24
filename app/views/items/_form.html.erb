@@ -59,19 +59,34 @@
     <div class="form-group">
     <%= f.label :Nuotrauka, class: "col col-xs-2 control-label" %>
     <span class="col col-xs-9">
-    <%= image_tag(@item.picture_url, :width => 300) if @item.picture.present? %><br/>
-    <div class="fileinput fileinput-new" data-provides="fileinput">
-      <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;"></div>
-      <div>
-        <span class="btn btn-default btn-file">
-          <span class="fileinput-new">Select image</span>
-          <span class="fileinput-exists">Change</span>
-          <%= f.file_field :picture, class: "input-with-feedback" %>
-          <!--<input type="file" name="...">-->
-        </span>
-        <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
+
+    <% if @item.persisted? %>
+      <div class="fileinput fileinput-exists" data-provides="fileinput">
+        <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;">
+          <%= image_tag(@item.picture_url, :width => 200) if @item.picture.present? %><br/>
+        </div>
+        <div>
+          <span class="btn btn-default btn-file">
+            <span class="fileinput-new">Select image</span>
+            <span class="fileinput-exists">Change</span>
+            <%= f.file_field :picture, class: "input-with-feedback" %>
+          </span>
+          <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
+        </div>
       </div>
-    </div>
+    <% else %>
+      <div class="fileinput fileinput-new" data-provides="fileinput">
+        <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;"></div>
+        <div>
+          <span class="btn btn-default btn-file">
+            <span class="fileinput-new">Select image</span>
+            <span class="fileinput-exists">Change</span>
+            <%= f.file_field :picture, class: "input-with-feedback" %>
+          </span>
+          <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
+        </div>
+      </div>
+    <% end %>
     </span>
   </div>
   <div class="form-group">
