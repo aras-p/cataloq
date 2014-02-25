@@ -1,3 +1,8 @@
+This is just me tinkering with Rails, in creating a super simple and stupid
+CRUD app. Will not be of interest to anyone out there, ever.
+
+I told ya!
+
 == Welcome to Rails
 
 Rails is a web-application framework that includes everything needed to create
